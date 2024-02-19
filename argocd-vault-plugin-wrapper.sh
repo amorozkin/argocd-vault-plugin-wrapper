@@ -69,7 +69,7 @@ decode_all_base64(){
 }
 
 check_vault_paths(){
-  cat | grep "<path\\|avp\\.kubernetes\\.io/path" \
+  cat | grep "<path:..*/data/argocd/..*>\\|avp\\.kubernetes\\.io/path:" \
     | grep -v "<path:${APP_PRODUCT_NAME}/data/\\|avp\\.kubernetes\\.io/path: \"${APP_PRODUCT_NAME}/data/" \
     && exit_error "Wrong VAULT secret path!!! Did you mean ${APP_PRODUCT_NAME}?" || true
 }
